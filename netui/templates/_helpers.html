@@ -1,0 +1,21 @@
+{% macro render_field(field) %}
+  <label for="">{{ field.label }}</label>
+  {{ field }}
+  {% if field.errors %}
+    {% for error in field.errors %}
+        <span style="color: red;">{{ error }}</span>
+    {% endfor %}
+  {% endif %}
+{% endmacro %}
+
+{% macro render_field_readonly(field) %}
+  <label for="">{{ field.label }}</label>
+  {{ field(readonly=true) }}
+  {% if field.errors %}
+    <ul class="errorlist">
+      {% for error in field.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

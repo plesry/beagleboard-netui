@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from "_helpers.html" import render_field %}
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+<form class="pure-form pure-form-aligned" method="POST">
+  {{ form.hidden_tag() }}
+  <fieldset>
+    <legend>Log in</legend>
+
+    <div class="pure-control-group">
+      {{ render_field(form.username) }}
+    </div>
+    <div class="pure-control-group">
+      {{ render_field(form.password) }}
+    </div>
+
+    <button type="submit" class="pure-button pure-button-primary">
+      Login
+    </button>
+  </fieldset>
+</form>
+
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from "_helpers.html" import render_field %}
+{% block title %}Import database{% endblock %}
+
+{% block content %}
+<form class="pure-form pure-form-aligned" method="POST" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+  <fieldset>
+    <legend>Upload Database (SQLITE3)</legend>
+
+    <div class="pure-control-group">
+      {{ render_field(form.db_file) }}
+    </div>
+
+    <button type="submit" class="pure-button pure-button-primary">
+      Upload
+    </button>
+  </fieldset>
+</form>
+
+{% endblock %}
+

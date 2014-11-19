@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% from "_helpers.html" import render_field %}
+{% block title %}Apply result page{% endblock %}
+
+{% block content %}
+<h2>Hooray!</h2>
+<p>
+  New WiFi configurations are written to system configurations.
+  <br />
+  ヽ(∀ﾟ )人(ﾟ∀ﾟ)人( ﾟ∀)人(∀ﾟ )人(ﾟ∀ﾟ)人( ﾟ∀)ﾉ
+  <br />
+  Click 'Continue' to go on.
+</p>
+
+<form class="pure-form pure-form-stacked" method="POST">
+  {{ form.hidden_tag() }}
+  <fieldset>
+    <button type="submit" class="pure-button pure-button-primary">
+      Continue
+    </button>
+  </fieldset>
+</form>
+
+{% endblock %}

@@ -1,0 +1,5 @@
+*.swp
+*.pyo
+*.pyc
+netui/db/*
+netui/uploads/*

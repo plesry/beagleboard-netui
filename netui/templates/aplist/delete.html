@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% from "_helpers.html" import render_field, render_field_readonly %}
+{% block title %}Delete AP{% endblock %}
+
+{% block content %}
+<form class="pure-form pure-form-stacked" method="POST">
+  {{ form.hidden_tag() }}
+  <fieldset>
+    <legend>Do you really want to delete {{ ap.ssid }}?</legend>
+
+    <button type="submit" class="pure-button pure-button-primary">
+      Delete IT!
+    </button>
+  </fieldset>
+</form>
+
+{% endblock %}
+

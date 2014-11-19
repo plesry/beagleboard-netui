@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block cssfile %}
+<!--  <link rel="stylesheet" href="{{ url_for('static', filename='welcome.css') }}"> -->
+{% endblock %}
+{% block title %}Welcome to {{ sysconf.ip_addr }}{% endblock %}
+
+{% block content %}
+<p>
+  <a class="pure-button" href="{{ url_for('sync_db', db_name='all') }}">Sync</a>
+  <a class="pure-button" href="{{ url_for('export_db') }}">Export</a>
+  <a class="pure-button" href="{{ url_for('import_db') }}">Import</a>
+</p>
+
+<div id="network_info">
+<h2>
+  Ethernet configuration
+</h2>
+{% if sysconf %}
+  <a class="pure-button" href="{{ url_for('edit_network') }}">Modify</a>
+<table class="pure-table pure-table-horizontal">
+  <thead>
+  <tr>
+    <th colspan="4">Network device {{ sysconf.device }}</th>
+  </tr>
+  <tr>
+    <th>ATTR</th>
+    <th>SYS_CONF</th>
+    <th>DIFF</th>
+    <th>DB_VALUE</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="pure-table-odd">
+    <td>Dynamic?</td>
+    <td>{{ sysconf.dynamic }}</td>
+    <td>
+      {% if sysconf.dynamic == dbconf.dynamic %}
+      <span style="color: green">==</span>
+      {% else %}
+      <span style="color: red">=&gt;</span>
+      {% endif %}
+    </td>
+    <td>{% if dbconf %}{{ dbconf.dynamic }}{% endif %}</td>
+  </tr>
+  <tr>
+    <td>IP address</td>
+    <td>{{ sysconf.ip_addr }}</td>
+    <td>
+      {% if sysconf.ip_addr == dbconf.ip_addr %}
+      <span style="color: green">==</span>
+      {% else %}
+      <span style="color: red">=&gt;</span>
+      {% endif %}
+    </td>
+    <td>{% if dbconf %}{{ dbconf.ip_addr }}{% endif %}</td>
+  </tr>
+  <tr class="pure-table-odd">
+    <td>Subnet mask</td>
+    <td>{{ sysconf.subnet_mask }}</td>
+    <td>
+      {% if sysconf.subnet_mask == dbconf.subnet_mask %}
+      <span style="color: green">==</span>
+      {% else %}
+      <span style="color: red">=&gt;</span>
+      {% endif %}
+    </td>
+    <td>{% if dbconf %}{{ dbconf.subnet_mask }}{% endif %}</td>
+  </tr>
+  <tr>
+    <td>Gateway</td>
+    <td>{{ sysconf.gateway }}</td>
+    <td>
+      {% if sysconf.gateway == dbconf.gateway %}
+      <span style="color: green">==</span>
+      {% else %}
+      <span style="color: red">=&gt;</span>
+      {% endif %}
+    </td>
+    <td>{% if dbconf %}{{ dbconf.gateway }}{% endif %}</td>
+  </tr>
+  <tr class="pure-table-odd">
+    <td>DNS</td>
+    <td>{{ sysconf.dns }}</td>
+    <td>
+      {% if sysconf.dns == dbconf.dns %}
+      <span style="color: green">==</span>
+      {% else %}
+      <span style="color: red">=&gt;</span>
+      {% endif %}
+    </td>
+    <td>{% if dbconf %}{{ dbconf.dns }}{% endif %}</td>
+  </tr>
+  </tbody>
+</table>
+{% else %}
+  <p>
+    No information available.
+  </p>
+{% endif %}
+</div>
+
+<div id="wifi_info">
+<h2>
+  Wireless network configurations
+</h2>
+
+<a class="pure-button" href="{{ url_for('create_ap') }}">Create</a>
+<a class="pure-button" href="{{ url_for('apply_wifi') }}">Apply to System</a>
+<table class="pure-table pure-table-horizontal">
+  <thead>
+    <tr>
+      <th>ID</th><th>SSID</th><th>TYPE</th><th>PSK</th><th>ORDER</th><th>ACTIONS</th>
+    </tr>
+  </thead>
+  <tbody>
+{% if aplist %}
+  {% for ap in aplist %}
+  <tr>
+    <td>{{ ap.id }}</td>
+    <td>{{ ap.ssid }}</td>
+    <td>{{ ap.security }}</td>
+    <td>{{ ap.psk }}</td>
+    <td>{{ ap.priority }}</td>
+    <td>
+      <a class="pure-button" 
+        href="{{ url_for("edit_ap", ap_id=ap.id) }}">Edit</a>
+      <a class="pure-button" 
+        href="{{ url_for("delete_ap", ap_id=ap.id) }}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+{% endif %}
+</tbody>
+</table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% from "_helpers.html" import render_field %}
+{% block title %}Export database{% endblock %}
+
+{% block content %}
+<a class="pure-button" 
+  href="{{ url_for('download_file', filename='netui.sqlite') }}">
+  Download database as SQLITE3 format
+</a>
+{% endblock %}
