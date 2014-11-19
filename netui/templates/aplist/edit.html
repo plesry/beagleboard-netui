@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "_helpers.html" import render_field, render_field_readonly %}
+{% block title %}Edit AP{% endblock %}
+
+{% block content %}
+<form class="pure-form pure-form-stacked" method="POST">
+  {{ form.hidden_tag() }}
+  <fieldset>
+    <legend>Edit AP settings</legend>
+
+    {{ render_field_readonly(form.ssid) }}
+    {{ render_field(form.security) }}
+    {{ render_field(form.psk) }}
+    {{ render_field(form.priority) }}
+
+    <button type="submit" class="pure-button pure-button-primary">Add</button>
+  </fieldset>
+</form>
+
+{% endblock %}

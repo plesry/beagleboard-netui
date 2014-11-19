@@ -1,0 +1,60 @@
+body
+{
+    background:#888;
+}
+
+#container
+{
+	margin: 0 auto;
+	width: 820px;
+	background:#fff;
+}
+
+#header
+{
+	background:#ccc;
+	padding: 5px;
+}
+
+#header h1 { margin: 0; }
+
+#flash_msg {
+  padding: 10 10 10 10;
+  background: #fffb00;
+}
+
+#network_info {
+  margin-top:5px;
+  margin-left:5px;
+  margin-right:auto;
+  margin-bottom:20px;
+}
+
+#wifi_info {
+  margin-top:5px;
+  margin-left:5px;
+  margin-right:auto;
+  margin-bottom:20px;
+}
+
+
+#content
+{
+	clear: left;
+	padding: 20px;
+}
+
+#content h2
+{
+	color:#000;
+	font-size: 160%;
+	margin: 0 0 .5em;
+}
+
+#footer
+{
+	background:#ccc;
+	text-align: right;
+	padding: 20px;
+	height: 1%;
+}

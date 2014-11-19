@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "_helpers.html" import render_field %}
+{% block title %}Change password{% endblock %}
+
+{% block content %}
+<form class="pure-form pure-form-aligned" method="POST">
+  {{ form.hidden_tag() }}
+  <fieldset>
+    <legend>Change password</legend>
+
+    <div class="pure-control-group">
+      {{ render_field(form.old_password) }}
+    </div>
+    <div class="pure-control-group">
+      {{ render_field(form.new_password) }}
+    </div>
+    <div class="pure-control-group">
+      {{ render_field(form.repeat_password) }}
+    </div>
+
+    <button type="submit" class="pure-button pure-button-primary">
+      Change
+    </button>
+  </fieldset>
+</form>
+
+{% endblock %}
+

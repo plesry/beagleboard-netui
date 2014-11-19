@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "_helpers.html" import render_field %}
+{% block title %}Edit network interface{% endblock %}
+
+{% block content %}
+<form class="pure-form pure-form-aligned" method="POST">
+  {{ form.hidden_tag() }}
+  <fieldset>
+    <legend>Edit Network Interface</legend>
+
+    <div class="pure-control-group">
+      {{ render_field(form.dynamic) }}
+    </div>
+    <div class="pure-control-group">
+      {{ render_field(form.ip_addr) }}
+    </div>
+    <div class="pure-control-group">
+      {{ render_field(form.subnet_mask) }}
+    </div>
+    <div class="pure-control-group">
+      {{ render_field(form.gateway) }}
+    </div>
+    <div class="pure-control-group">
+      {{ render_field(form.dns) }}
+    </div>
+
+    <button type="submit" class="pure-button pure-button-primary">
+      Submit
+    </button>
+  </fieldset>
+</form>
+
+{% endblock %}
+
